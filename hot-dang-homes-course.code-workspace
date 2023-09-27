@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../backend/wp-app/wp-content/themes/twentytwentytwo-child"
+		}
+	],
+	"settings": {}
+}

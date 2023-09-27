@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tailwind:build-editor": "npx tailwindcss -i ./styles/editor.css -o ./public/styles/editor.css",
+    "tailwind:watch-editor": "npx tailwindcss -i ./styles/editor.css -o ./public/styles/editor.css --watch"
   },
   "dependencies": {
     "@apollo/client": "^3.6.8",
