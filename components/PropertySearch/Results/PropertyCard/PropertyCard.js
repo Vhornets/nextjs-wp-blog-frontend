@@ -22,11 +22,10 @@ export const PropertyCard = ({
     >
       <Image
         alt="Property image"
-        className="block w-full mb-3"
+        className="block w-full h-52 mb-3 object-cover"
         src={featuredImage.node.sourceUrl}
         width={300}
         height={200}
-        style={{ objectFit: "cover", height: "200px" }}
       />
 
       <h1 className="font-bold text-lg">{title}</h1>

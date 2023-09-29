@@ -4,11 +4,9 @@ import { faCircleCheck } from "@fortawesome/free-solid-svg-icons";
 export const TickItem = ({ children }) => {
   return (
     <div className="flex items-center">
-      <div>
-        <FontAwesomeIcon icon={faCircleCheck} />
-      </div>
+      <FontAwesomeIcon icon={faCircleCheck} className="text-green-500" />
 
-      <div className="pl-2 flex-1">{children}</div>
+      <div className="flex-1 pl-2">{children}</div>
     </div>
   );
 };

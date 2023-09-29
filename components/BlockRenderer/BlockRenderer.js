@@ -15,8 +15,6 @@ import { TickItem } from "components/TickItem";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
-    console.log(block);
-
     switch (block.name) {
       case "vh/tick-item":
         return (
@@ -68,7 +66,6 @@ export const BlockRenderer = ({ blocks }) => {
         );
 
       case "core/columns":
-        console.log(block);
         return (
           <Columns
             {...block.attributes}
