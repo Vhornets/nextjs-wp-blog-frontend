@@ -9,8 +9,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["var(--font-aboretto)"],
         body: ["var(--font-poppins)"],
+      },
+      backgroundImage: {
+        "hot-gradient": "var(--hot-gradient)",
       },
     },
   },

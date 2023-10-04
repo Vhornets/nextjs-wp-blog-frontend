@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --hot-gradient: linear-gradient(97deg, #C41740 4.8%, #EA9C28 100%);
+}
+
 @layer components {
   .btn {
-    @apply bg-pink-600 hover:bg-pink-700 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
+    @apply bg-gray-800 hover:bg-white hover:text-gray-800 inline-block my-2 px-3.5 py-3 rounded-lg border-gray-800 border-solid border-[1px] cursor-pointer font-bold text-white text-sm transition-colors duration-300;
   }
 }

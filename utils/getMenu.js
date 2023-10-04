@@ -4,34 +4,24 @@ export const getMenu = async () => {
   const params = {
     query: `
       query MenuQuery {
-        acfOptionsMainMenu {
-          mainMenu {
-            menuItems {
-              menuItem {
-                destination {
-                  ... on Page {
-                    uri
-                  }
-                }
-                label
-              }
-              items {
-                destination {
-                  ... on Page {
-                    uri
-                  }
-                }
-                label
+        themeOptions {
+          options {
+            menu {
+              item {
+                title
+                url
               }
             }
-  
             callToActionButton {
-              destination {
-                ... on Page {
-                  uri
-                }
-              }
-              label
+              text
+              url
+            }
+            logo {
+              sourceUrl
+              mediaDetails {
+                width
+                height
+              }              
             }
           }
         }
@@ -50,11 +40,11 @@ export const getMenu = async () => {
   const { data } = await response.json();
 
   return {
-    mainMenuItems: mapMainMenuItems(data.acfOptionsMainMenu.mainMenu.menuItems),
+    mainMenuItems: mapMainMenuItems(data.themeOptions.options.menu),
     callToActionButton: {
-      label: data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
-      destination:
-        data.acfOptionsMainMenu.mainMenu.callToActionButton.destination.uri,
+      title: data.themeOptions.options.callToActionButton.text,
+      url: data.themeOptions.options.callToActionButton.url,
     },
+    logo: data.themeOptions.options.logo,
   };
 };

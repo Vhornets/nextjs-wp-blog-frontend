@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-export const ButtonLink = ({ label, destination = "#" }) => {
+export const ButtonLink = ({ title, url = "#" }) => {
   return (
     <Link
-      href={destination}
+      href={url}
       className="btn"
-      dangerouslySetInnerHTML={{ __html: label }}
+      dangerouslySetInnerHTML={{ __html: title }}
     ></Link>
   );
 };

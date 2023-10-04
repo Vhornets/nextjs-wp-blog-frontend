@@ -8,21 +8,11 @@ import { Paragraph } from "components/Paragraph";
 import { CallToAction } from "components/CallToAction";
 import { Columns } from "components/Columns";
 import { Column } from "components/Column";
-import { PropertySearch } from "components/PropertySearch";
-import { PropertyFeatures } from "components/PropertyFeatures";
 import { Gallery } from "components/Gallery";
-import { TickItem } from "components/TickItem";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
-      case "vh/tick-item":
-        return (
-          <TickItem key={block.attributes.id} {...block.attributes}>
-            <BlockRenderer blocks={block.innerBlocks} />
-          </TickItem>
-        );
-
       case "core/gallery":
         return (
           <Gallery
@@ -32,12 +22,6 @@ export const BlockRenderer = ({ blocks }) => {
             items={block.innerBlocks}
           />
         );
-
-      case "vh/property-features":
-        return <PropertyFeatures {...block.attributes} key={block.id} />;
-
-      case "vh/property-search":
-        return <PropertySearch key={block.id} />;
 
       case "core/block":
       case "core/group":

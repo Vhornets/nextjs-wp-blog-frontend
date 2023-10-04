@@ -6,11 +6,7 @@ export const getPage = async (uri) => {
       query PageQuery($uri: String!) {
         nodeByUri(uri: $uri) {
           ... on Page {
-            blocks
-          }
-
-          ... on Property {
-            blocks
+            blocksJSON
           }
         }
       }
@@ -35,7 +31,7 @@ export const getPage = async (uri) => {
     return null;
   }
 
-  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocks);
+  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
 
   return blocks;
 };
