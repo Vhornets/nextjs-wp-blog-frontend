@@ -173,12 +173,36 @@
   margin-top: 1.5rem
 }
 
+.mt-7 {
+  margin-top: 1.75rem
+}
+
+.mt-2 {
+  margin-top: 0.5rem
+}
+
+.mb-2\.5 {
+  margin-bottom: 0.625rem
+}
+
+.mb-7 {
+  margin-bottom: 1.75rem
+}
+
+.mt-4 {
+  margin-top: 1rem
+}
+
 .block {
   display: block
 }
 
 .flex {
   display: flex
+}
+
+.grid {
+  display: grid
 }
 
 .hidden {
@@ -199,6 +223,10 @@
 
 .h-full {
   height: 100%
+}
+
+.h-52 {
+  height: 13rem
 }
 
 .min-h-\[400px\] {
@@ -253,6 +281,14 @@
   cursor: pointer
 }
 
+.grid-cols-\[80\%_20\%\] {
+  grid-template-columns: 80% 20%
+}
+
+.grid-cols-\[70\%_30\%\] {
+  grid-template-columns: 70% 30%
+}
+
 .flex-wrap {
   flex-wrap: wrap
 }
@@ -273,8 +309,20 @@
   justify-content: center
 }
 
+.justify-between {
+  justify-content: space-between
+}
+
+.justify-around {
+  justify-content: space-around
+}
+
 .gap-4 {
   gap: 1rem
+}
+
+.gap-5 {
+  gap: 1.25rem
 }
 
 .rounded-full {
@@ -283,6 +331,10 @@
 
 .rounded-lg {
   border-radius: 0.5rem
+}
+
+.rounded-\[20px\] {
+  border-radius: 20px
 }
 
 .rounded-r-lg {
@@ -407,6 +459,16 @@
   padding-right: 2rem
 }
 
+.px-7 {
+  padding-left: 1.75rem;
+  padding-right: 1.75rem
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem
+}
+
 .pt-28 {
   padding-top: 7rem
 }
@@ -433,6 +495,10 @@
 
 .pl-5 {
   padding-left: 1.25rem
+}
+
+.pr-5 {
+  padding-right: 1.25rem
 }
 
 .text-left {
@@ -504,6 +570,20 @@
   font-size: 16px
 }
 
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem
+}
+
+.text-\[26px\] {
+  font-size: 26px
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
 .font-semibold {
   font-weight: 600
 }
@@ -518,6 +598,10 @@
 
 .font-medium {
   font-weight: 500
+}
+
+.uppercase {
+  text-transform: uppercase
 }
 
 .leading-tight {
@@ -727,8 +811,28 @@
     position: absolute
   }
 
+  .md\:mt-0 {
+    margin-top: 0px
+  }
+
+  .md\:mt-7 {
+    margin-top: 1.75rem
+  }
+
+  .md\:mt-5 {
+    margin-top: 1.25rem
+  }
+
+  .md\:block {
+    display: block
+  }
+
   .md\:flex {
     display: flex
+  }
+
+  .md\:grid {
+    display: grid
   }
 
   .md\:hidden {
@@ -747,12 +851,45 @@
     width: auto
   }
 
+  .md\:grid-cols-\[70\%_30\%\] {
+    grid-template-columns: 70% 30%
+  }
+
+  .md\:py-14 {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem
+  }
+
+  .md\:px-7 {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem
+  }
+
+  .md\:py-5 {
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem
+  }
+
+  .md\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px
+  }
+
+  .md\:px-0 {
+    padding-left: 0px;
+    padding-right: 0px
+  }
+
   .md\:pt-20 {
     padding-top: 5rem
   }
 
   .md\:pb-14 {
     padding-bottom: 3.5rem
+  }
+
+  .md\:pr-5 {
+    padding-right: 1.25rem
   }
 
   .md\:text-5xl {
@@ -769,6 +906,10 @@
     font-size: 1.125rem;
     line-height: 1.75rem
   }
+
+  .md\:text-\[26px\] {
+    font-size: 26px
+  }
 }
 
 @media (min-width: 1024px) {
@@ -779,6 +920,11 @@
   .lg\:py-14 {
     padding-top: 3.5rem;
     padding-bottom: 3.5rem
+  }
+
+  .lg\:py-20 {
+    padding-top: 5rem;
+    padding-bottom: 5rem
   }
 
   .lg\:pt-28 {

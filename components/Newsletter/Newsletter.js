@@ -4,31 +4,23 @@ export const Newsletter = ({ title, text }) => {
       <div className="flex flex-wrap justify-center items-center max-w-lg mx-auto">
         {title && (
           <h4 className="font-bold basis-full text-lg lg:text-3xl text-hot-gradient">
-            Personally Newsletter
+            {title}
           </h4>
         )}
 
         {text && (
           <p className="basis-full text-[16px] font-light text-gray-600 leading-normal mt-3 md:text-lg">
-            A bi-weekly newsletter of design inspiration, resources and anything
-            related to career development.t
+            {text}
           </p>
         )}
 
         <form className="basis-full max-w-sm mx-auto mt-6 sm:mt-8">
-          <label
-            htmlFor="search"
-            className="mb-2 text-sm font-medium text-gray-900 sr-only"
-          >
-            Search
-          </label>
-
           <div className="relative">
             <input
-              type="search"
-              id="search"
+              type="email"
+              id="newsletter-email"
               className="block w-full p-3.5 pl-5 text-sm font-medium text-gray-900 border border-gray-300 rounded-lg bg-white focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Search"
+              placeholder="Your email"
               required
             />
 

@@ -103,7 +103,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
 
       default: {
-        console.log("UNKNOWN BLOCK:", block);
+        // console.log("UNKNOWN BLOCK:", block);
 
         return null;
       }

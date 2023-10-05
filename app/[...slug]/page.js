@@ -1,3 +1,4 @@
+import { Hero } from "components/Hero";
 import { BlockRenderer } from "components/BlockRenderer";
 import { notFound } from "next/navigation";
 import { getPage } from "utils/getPage";
@@ -10,7 +11,12 @@ export default async function Page({ params }) {
     notFound();
   }
 
-  return <BlockRenderer blocks={data} />;
+  return (
+    <>
+      <Hero title="Hello world" text="Blog description" />
+      <BlockRenderer blocks={data} />;
+    </>
+  );
 }
 
 export async function generateMetadata({ params }) {

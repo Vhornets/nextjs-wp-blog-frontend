@@ -6,6 +6,8 @@ import { getMenu } from "utils/getMenu";
 import { Header } from "components/Header";
 import { Footer } from "components/Footer";
 
+import { PostCard } from "components/PostCard";
+
 const poppins = Poppins({
   weight: ["300", "400", "600", "700"],
   subsets: ["latin"],
