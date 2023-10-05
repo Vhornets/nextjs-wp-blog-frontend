@@ -7,7 +7,7 @@ import { Header } from "components/Header";
 import { Footer } from "components/Footer";
 
 const poppins = Poppins({
-  weight: ["400", "600", "700"],
+  weight: ["300", "400", "600", "700"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-poppins",
@@ -20,12 +20,6 @@ export default async function RootLayout({ children }) {
     <html className={`${poppins.variable}`} lang="en">
       <body className="font-body">
         <Header {...mainMenu} />
-
-        <div className="p-10 mx-auto flex justify-center">
-          <span className="bg-gray-100 text-gray-800 text-sm font-semibold py-2.5 px-4 rounded-full">
-            👋 Meet Personally
-          </span>
-        </div>
 
         {children}
 

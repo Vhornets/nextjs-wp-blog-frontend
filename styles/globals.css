@@ -10,4 +10,8 @@
   .btn {
     @apply bg-gray-800 hover:bg-white hover:text-gray-800 inline-block my-2 px-3.5 py-3 rounded-lg border-gray-800 border-solid border-[1px] cursor-pointer font-bold text-white text-sm transition-colors duration-300;
   }
+
+  .text-hot-gradient {
+    @apply bg-clip-text bg-hot-gradient text-transparent;
+  }
 }

@@ -9,10 +9,14 @@ import { CallToAction } from "components/CallToAction";
 import { Columns } from "components/Columns";
 import { Column } from "components/Column";
 import { Gallery } from "components/Gallery";
+import { Hero } from "components/Hero";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "vh/hero":
+        return <Hero {...block.attributes} />;
+
       case "core/gallery":
         return (
           <Gallery
