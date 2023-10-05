@@ -10,10 +10,14 @@ import { Columns } from "components/Columns";
 import { Column } from "components/Column";
 import { Gallery } from "components/Gallery";
 import { Hero } from "components/Hero";
+import { Newsletter } from "components/Newsletter";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "vh/newsletter":
+        return <Newsletter {...block.attributes} />;
+
       case "vh/hero":
         return <Hero {...block.attributes} />;
 
