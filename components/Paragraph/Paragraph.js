@@ -5,7 +5,9 @@ import React from "react";
 export const Paragraph = ({ textAlign = "left", textColor, content }) => {
   return (
     <p
-      className={`max-w-5xl mx-auto my-3 leading-7 ${getTextAlign(textAlign)}`}
+      className={`max-w-2xl mx-auto my-12 leading-normal text-lg text-gray-800 font-light ${getTextAlign(
+        textAlign
+      )}`}
       style={{ color: textColor }}
       dangerouslySetInnerHTML={{ __html: relativeToAbsoluteUrls(content) }}
     />

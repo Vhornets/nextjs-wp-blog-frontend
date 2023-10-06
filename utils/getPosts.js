@@ -1,13 +1,19 @@
-export const getPosts = async (categorySlug) => {
+import dayjs from "dayjs";
+
+const PAGE_SIZE = 2;
+
+export const getPosts = async (categorySlug, page = 1) => {
+  const offset = ((page || 1) - 1) * PAGE_SIZE;
+
   const params = {
     query: `
-      query PostsQuery($categorySlug: String!) {
-        posts(where: {categoryName: $categorySlug}) {
+      query PostsQuery($categorySlug: String!, $offset: Int!) {
+        posts(where: {categoryName: $categorySlug, offsetPagination: {size: ${PAGE_SIZE}, offset: $offset}}) {
           nodes {
             title
             excerpt(format: RENDERED)
             uri
-            dateGmt
+            date
             featuredImage {
               node {
                 mediaDetails {
@@ -18,12 +24,18 @@ export const getPosts = async (categorySlug) => {
               }
             }
           }
+          pageInfo {
+            offsetPagination {
+              total
+            }
+          }          
         }
       }
     `,
 
     variables: {
       categorySlug,
+      offset,
     },
   };
 
@@ -41,5 +53,18 @@ export const getPosts = async (categorySlug) => {
     return null;
   }
 
-  return data.posts.nodes;
+  const totalPages = Math.ceil(
+    data.posts.pageInfo.offsetPagination.total / PAGE_SIZE
+  );
+
+  // add formated date to each post
+  data.posts.nodes.map(
+    (post) => (post.dateFormatted = dayjs(post.date).format("MMMM DD, YYYY"))
+  );
+
+  return {
+    posts: data.posts.nodes,
+    totalPosts: data.posts.pageInfo.offsetPagination.total,
+    hasNextPage: page < totalPages,
+  };
 };

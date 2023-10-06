@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ButtonLink } from "components/ButtonLink";
 import { MainMenu } from "components/MainMenu";
 import { useState } from "react";
 
@@ -31,7 +30,9 @@ export const Header = ({ mainMenuItems, callToActionButton, logo }) => {
         </div>
 
         <div className="ml-3 my-auto hidden lg:block">
-          <ButtonLink {...callToActionButton} />
+          <Link href={callToActionButton.url} className="btn">
+            {callToActionButton.title}
+          </Link>
         </div>
 
         <div

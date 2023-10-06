@@ -11,20 +11,12 @@
     "tailwind:watch-editor": "npx tailwindcss -i ./styles/editor.css -o ./public/styles/editor.css --watch"
   },
   "dependencies": {
-    "@apollo/client": "^3.6.8",
-    "@formspree/react": "^2.4.0",
-    "@fortawesome/fontawesome-svg-core": "^6.2.0",
-    "@fortawesome/free-regular-svg-icons": "^6.2.0",
-    "@fortawesome/free-solid-svg-icons": "^6.2.0",
-    "@fortawesome/react-fontawesome": "^0.2.0",
+    "dayjs": "^1.11.10",
     "graphql": "^16.5.0",
     "html-react-parser": "^3.0.4",
     "next": "13.4.19",
-    "numeral": "^2.0.6",
-    "query-string": "^7.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-icons": "^4.4.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {

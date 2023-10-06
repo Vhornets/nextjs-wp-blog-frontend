@@ -1,4 +1,5 @@
 import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
+import dayjs from "dayjs";
 
 export const getPage = async (uri) => {
   const params = {
@@ -6,7 +7,28 @@ export const getPage = async (uri) => {
       query PageQuery($uri: String!) {
         nodeByUri(uri: $uri) {
           ... on Page {
+            title
             blocksJSON
+          }
+          ... on Post {
+            date
+            title
+            blocksJSON
+            categories {
+              nodes {
+                name
+                slug
+              }
+            }            
+            featuredImage {
+              node {
+                sourceUrl
+                mediaDetails {
+                  height
+                  width
+                }
+              }
+            }
           }
         }
       }
@@ -31,7 +53,11 @@ export const getPage = async (uri) => {
     return null;
   }
 
-  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocksJSON);
-
-  return blocks;
+  return {
+    blocks: cleanAndTransformBlocks(data.nodeByUri.blocksJSON),
+    title: data.nodeByUri.title,
+    featuredImage: data.nodeByUri.featuredImage?.node,
+    dateFormatted: dayjs(data.nodeByUri.date).format("MMMM DD, YYYY"),
+    categories: data.nodeByUri.categories?.nodes,
+  };
 };

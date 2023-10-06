@@ -5,7 +5,6 @@ import Image from "next/image";
 import { Cover } from "components/Cover";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
-import { CallToAction } from "components/CallToAction";
 import { Columns } from "components/Columns";
 import { Column } from "components/Column";
 import { Gallery } from "components/Gallery";
@@ -41,13 +40,20 @@ export const BlockRenderer = ({ blocks }) => {
 
       case "core/image":
         return (
-          <Image
-            key={block.id}
-            alt="Image"
-            src={block.attributes.url}
-            width={block.attributes.width}
-            height={block.attributes.height}
-          />
+          <div className="max-w-3xl mx-auto my-10 relative">
+            <Image
+              className="rounded-xl"
+              key={block.id}
+              alt="Image"
+              src={block.attributes.url}
+              width={block.attributes.width}
+              height={block.attributes.height}
+            />
+
+            <div className="absolute left-4 bottom-4 rounded-full bg-white py-2 px-3 text-xs uppercase">
+              {block.attributes.caption}
+            </div>
+          </div>
         );
 
       case "core/column":
@@ -75,9 +81,6 @@ export const BlockRenderer = ({ blocks }) => {
           </Columns>
         );
 
-      case "vh/cta":
-        return <CallToAction {...block.attributes} key={block.id} />;
-
       case "core/paragraph":
         return (
           <Paragraph
@@ -89,6 +92,13 @@ export const BlockRenderer = ({ blocks }) => {
               block.attributes.style?.color?.text
             }
           />
+        );
+
+      case "core/quote":
+        return (
+          <blockquote className="max-w-[780px] [&>*]:max-w-none mx-auto my-10 border-solid border-l-8 border-[#C41740] pl-6">
+            <BlockRenderer blocks={block.innerBlocks} />
+          </blockquote>
         );
 
       case "core/post-title":
@@ -103,7 +113,7 @@ export const BlockRenderer = ({ blocks }) => {
         );
 
       default: {
-        // console.log("UNKNOWN BLOCK:", block);
+        console.log("UNKNOWN BLOCK:", block);
 
         return null;
       }
