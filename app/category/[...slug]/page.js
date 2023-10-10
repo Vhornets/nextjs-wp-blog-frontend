@@ -26,11 +26,11 @@ export default async function Page({ params, searchParams }) {
   );
 }
 
-// export async function generateMetadata({ params }) {
-//   const seo = await getSeo(params.slug.join("/"));
+export async function generateMetadata({ params }) {
+  const seo = await getSeo(`category/${params.slug.join("/")}`);
 
-//   return {
-//     title: seo?.title || "",
-//     description: seo?.description || "",
-//   };
-// }
+  return {
+    title: seo?.title || "",
+    description: seo?.description || "",
+  };
+}

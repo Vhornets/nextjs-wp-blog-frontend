@@ -31,7 +31,7 @@ export const Hero = ({ badge, title, text, date, categories }) => {
                 <Link
                   className="text-gray-800 font-bold"
                   key={category.slug}
-                  href={`/blog/category/${category.slug}`}
+                  href={category.uri}
                 >
                   • {category.name}
                 </Link>

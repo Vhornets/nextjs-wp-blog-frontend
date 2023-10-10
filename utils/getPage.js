@@ -18,6 +18,28 @@ export const getPage = async (uri) => {
               nodes {
                 name
                 slug
+                uri
+              }
+            }            
+            featuredImage {
+              node {
+                sourceUrl
+                mediaDetails {
+                  height
+                  width
+                }
+              }
+            }
+          }
+          ... on Tutorial {
+            date
+            title
+            blocksJSON
+            tutorialCategories {
+              nodes {
+                name
+                slug
+                uri
               }
             }            
             featuredImage {
@@ -58,6 +80,8 @@ export const getPage = async (uri) => {
     title: data.nodeByUri.title,
     featuredImage: data.nodeByUri.featuredImage?.node,
     dateFormatted: dayjs(data.nodeByUri.date).format("MMMM DD, YYYY"),
-    categories: data.nodeByUri.categories?.nodes,
+    categories:
+      data.nodeByUri.categories?.nodes ||
+      data.nodeByUri.tutorialCategories?.nodes,
   };
 };

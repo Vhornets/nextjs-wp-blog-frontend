@@ -1,4 +1,5 @@
 import { Newsletter } from "components/Newsletter";
+import dayjs from "dayjs";
 
 export const Footer = () => {
   return (
@@ -9,7 +10,7 @@ export const Footer = () => {
       />
 
       <div className="bg-white py-10 text-center text-xs text-gray-800 shadow-[0_1px_0_0_rgba(30,40,52,0.12)_inset]">
-        <p>Copyright 2023</p>
+        <p>Copyright {dayjs().format("YYYY")}</p>
       </div>
     </>
   );

@@ -1,13 +1,8 @@
-import { theme } from "theme";
-
 import Image from "next/image";
 
 import { Cover } from "components/Cover";
 import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
-import { Columns } from "components/Columns";
-import { Column } from "components/Column";
-import { Gallery } from "components/Gallery";
 import { Hero } from "components/Hero";
 import { Newsletter } from "components/Newsletter";
 
@@ -20,18 +15,10 @@ export const BlockRenderer = ({ blocks }) => {
       case "vh/hero":
         return <Hero {...block.attributes} />;
 
-      case "core/gallery":
-        return (
-          <Gallery
-            key={block.id}
-            columns={block.attributes.columns || 3}
-            imageCrop={block.attributes.imageCrop}
-            items={block.innerBlocks}
-          />
-        );
-
       case "core/block":
       case "core/group":
+      case "core/column":
+      case "core/columns":
         return (
           <div key={block.id}>
             <BlockRenderer blocks={block.innerBlocks} />
@@ -55,15 +42,6 @@ export const BlockRenderer = ({ blocks }) => {
             </div>
           </div>
         );
-
-      case "core/column":
-        return (
-          <Column key={block.id} {...block.attributes}>
-            <BlockRenderer blocks={block.innerBlocks} />
-          </Column>
-        );
-
-      case "core/columns":
         return (
           <Columns
             {...block.attributes}
@@ -87,10 +65,6 @@ export const BlockRenderer = ({ blocks }) => {
             key={block.id}
             textAlign={block.attributes.align}
             content={block.attributes.content}
-            textColor={
-              theme[block.attributes.textColor] ||
-              block.attributes.style?.color?.text
-            }
           />
         );
 

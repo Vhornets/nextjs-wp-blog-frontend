@@ -9,6 +9,30 @@ export const getSeo = async (uri) => {
                 metaDesc
               }
             }
+            ... on Post {
+              seo {
+                title
+                metaDesc
+              }
+            }
+            ... on Tutorial {
+              seo {
+                title
+                metaDesc
+              }
+            }
+            ... on Category {
+              seo {
+                title
+                metaDesc
+              }
+            }
+            ... on TutorialCategory {
+              seo {
+                title
+                metaDesc
+              }
+            }
           }
         }
       `,

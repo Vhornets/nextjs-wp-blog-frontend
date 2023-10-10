@@ -7,6 +7,7 @@ export const PostCard = ({
   uri,
   featuredImage,
   dateFormatted,
+  postType,
 }) => {
   return (
     <article className="bg-white rounded-[20px] md:px-7 md:py-5 md:pr-5 md:grid md:grid-cols-[70%_30%] items-center mt-4 md:mt-5">
@@ -14,7 +15,7 @@ export const PostCard = ({
         <div className="text-gray-500 uppercase text-xs">{dateFormatted}</div>
 
         <h4 className="text-lg md:text-2xl text-gray-800 mt-5 md:mt-7 font-semibold">
-          <Link href={`/blog${uri}`}>{title}</Link>
+          <Link href={uri}>{title}</Link>
         </h4>
 
         <div
@@ -24,7 +25,7 @@ export const PostCard = ({
       </div>
 
       <div>
-        <Link href={`/blog${uri}`}>
+        <Link href={uri}>
           <Image
             alt="Article thumb"
             className="rounded-lg block object-cover h-52"

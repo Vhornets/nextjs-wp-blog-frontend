@@ -4,7 +4,7 @@ import { v4 as uuid } from "uuid";
 import { useState, useEffect } from "react";
 import { PostCard } from "components/PostCard";
 
-export const Posts = ({ category = "" }) => {
+export const Posts = ({ category = "", postType = "posts" }) => {
   const [posts, setPosts] = useState([]);
   const [hasNextPage, setHasNextPage] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -18,6 +18,7 @@ export const Posts = ({ category = "" }) => {
       body: JSON.stringify({
         page: currentPage,
         category: category,
+        postType: postType,
       }),
     });
 
@@ -38,7 +39,7 @@ export const Posts = ({ category = "" }) => {
   return (
     <>
       {posts.map((post) => (
-        <PostCard key={uuid()} {...post} />
+        <PostCard postType={postType} key={uuid()} {...post} />
       ))}
 
       {hasNextPage && (

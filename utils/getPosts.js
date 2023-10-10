@@ -1,37 +1,66 @@
 import dayjs from "dayjs";
 
-const PAGE_SIZE = 2;
+const PAGE_SIZE = 1;
+const QUERY = {
+  posts: `
+    query PostsQuery($categorySlug: String!, $offset: Int!) {
+      posts(where: {categoryName: $categorySlug, offsetPagination: {size: ${PAGE_SIZE}, offset: $offset}}) {
+        nodes {
+          title
+          excerpt(format: RENDERED)
+          uri
+          date
+          featuredImage {
+            node {
+              mediaDetails {
+                height
+                width
+              }
+              mediaItemUrl
+            }
+          }
+        }
+        pageInfo {
+          offsetPagination {
+            total
+          }
+        }          
+      }
+    }
+  `,
+  tutorials: `
+    query TutorialsQuery($categorySlug: String!, $offset: Int!) {
+      tutorials(where: {tutorialCategorySlug: $categorySlug, offsetPagination: {size: ${PAGE_SIZE}, offset: $offset}}) {
+        nodes {
+          title
+          excerpt(format: RENDERED)
+          uri
+          date
+          featuredImage {
+            node {
+              mediaDetails {
+                height
+                width
+              }
+              mediaItemUrl
+            }
+          }
+        }
+        pageInfo {
+          offsetPagination {
+            total
+          }
+        }
+      }
+    }
+  `,
+};
 
-export const getPosts = async (categorySlug, page = 1) => {
+export const getPosts = async (categorySlug, page = 1, postType = "posts") => {
   const offset = ((page || 1) - 1) * PAGE_SIZE;
 
   const params = {
-    query: `
-      query PostsQuery($categorySlug: String!, $offset: Int!) {
-        posts(where: {categoryName: $categorySlug, offsetPagination: {size: ${PAGE_SIZE}, offset: $offset}}) {
-          nodes {
-            title
-            excerpt(format: RENDERED)
-            uri
-            date
-            featuredImage {
-              node {
-                mediaDetails {
-                  height
-                  width
-                }
-                mediaItemUrl
-              }
-            }
-          }
-          pageInfo {
-            offsetPagination {
-              total
-            }
-          }          
-        }
-      }
-    `,
+    query: QUERY[postType],
 
     variables: {
       categorySlug,
@@ -49,22 +78,22 @@ export const getPosts = async (categorySlug, page = 1) => {
 
   const { data } = await response.json();
 
-  if (!data.posts) {
+  if (!data[postType]) {
     return null;
   }
 
   const totalPages = Math.ceil(
-    data.posts.pageInfo.offsetPagination.total / PAGE_SIZE
+    data[postType].pageInfo.offsetPagination.total / PAGE_SIZE
   );
 
   // add formated date to each post
-  data.posts.nodes.map(
+  data[postType].nodes.map(
     (post) => (post.dateFormatted = dayjs(post.date).format("MMMM DD, YYYY"))
   );
 
   return {
-    posts: data.posts.nodes,
-    totalPosts: data.posts.pageInfo.offsetPagination.total,
+    posts: data[postType].nodes,
+    totalPosts: data[postType].pageInfo.offsetPagination.total,
     hasNextPage: page < totalPages,
   };
 };
