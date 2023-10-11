@@ -2,7 +2,7 @@
 
 import { v4 as uuid } from "uuid";
 import { useState, useEffect } from "react";
-import { PostCard } from "components/PostCard";
+import { PostCard } from "components/Posts/PostCard";
 
 export const Posts = ({ category = "", postType = "posts" }) => {
   const [posts, setPosts] = useState([]);
@@ -23,6 +23,8 @@ export const Posts = ({ category = "", postType = "posts" }) => {
     });
 
     const data = await response.json();
+
+    console.log(data);
 
     setHasNextPage(data.hasNextPage);
     setPosts([...posts, ...data.posts]);

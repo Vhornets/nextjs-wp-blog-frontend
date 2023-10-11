@@ -5,10 +5,14 @@ import { Heading } from "components/Heading";
 import { Paragraph } from "components/Paragraph";
 import { Hero } from "components/Hero";
 import { Newsletter } from "components/Newsletter";
+import { PostsPanel } from "components/Posts/PostsPanel";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "vh/posts":
+        return <PostsPanel {...block.attributes} />;
+
       case "vh/newsletter":
         return <Newsletter {...block.attributes} />;
 
@@ -27,7 +31,7 @@ export const BlockRenderer = ({ blocks }) => {
 
       case "core/image":
         return (
-          <div className="max-w-3xl mx-auto my-10 relative">
+          <div className="max-w-3xl mx-auto my-10 px-4 relative">
             <Image
               className="rounded-xl"
               key={block.id}

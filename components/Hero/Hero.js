@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-export const Hero = ({ badge, title, text, date, categories }) => {
+export const Hero = ({ badge, title, text, date, categories, showBadge }) => {
   return (
     <div className="bg-white px-4 text-center pt-14 pb-10 md:pt-20 md:pb-14 lg:pt-28 lg:pb-20">
       <div className="flex flex-wrap justify-center items-center mx-auto max-w-[980px]">
-        {badge && (
+        {showBadge && (
           <span className="bg-gray-100 text-gray-800 text-sm font-semibold py-2.5 px-4 rounded-full">
             {badge}
           </span>

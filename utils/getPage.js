@@ -1,4 +1,4 @@
-import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
+import { assignIdsToBlocks } from "./assignIdsToBlocks";
 import dayjs from "dayjs";
 
 export const getPage = async (uri) => {
@@ -8,11 +8,13 @@ export const getPage = async (uri) => {
         nodeByUri(uri: $uri) {
           ... on Page {
             title
+            contentTypeName
             blocksJSON
           }
           ... on Post {
             date
             title
+            contentTypeName
             blocksJSON
             categories {
               nodes {
@@ -34,6 +36,7 @@ export const getPage = async (uri) => {
           ... on Tutorial {
             date
             title
+            contentTypeName
             blocksJSON
             tutorialCategories {
               nodes {
@@ -76,7 +79,8 @@ export const getPage = async (uri) => {
   }
 
   return {
-    blocks: cleanAndTransformBlocks(data.nodeByUri.blocksJSON),
+    postType: data.nodeByUri.contentTypeName,
+    blocks: assignIdsToBlocks(data.nodeByUri.blocksJSON),
     title: data.nodeByUri.title,
     featuredImage: data.nodeByUri.featuredImage?.node,
     dateFormatted: dayjs(data.nodeByUri.date).format("MMMM DD, YYYY"),

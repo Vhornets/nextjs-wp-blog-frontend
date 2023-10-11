@@ -3,7 +3,7 @@ import dayjs from "dayjs";
 const PAGE_SIZE = 1;
 const QUERY = {
   posts: `
-    query PostsQuery($categorySlug: String!, $offset: Int!) {
+    query PostsQuery($categorySlug: String, $offset: Int!) {
       posts(where: {categoryName: $categorySlug, offsetPagination: {size: ${PAGE_SIZE}, offset: $offset}}) {
         nodes {
           title
@@ -29,7 +29,7 @@ const QUERY = {
     }
   `,
   tutorials: `
-    query TutorialsQuery($categorySlug: String!, $offset: Int!) {
+    query TutorialsQuery($categorySlug: String, $offset: Int!) {
       tutorials(where: {tutorialCategorySlug: $categorySlug, offsetPagination: {size: ${PAGE_SIZE}, offset: $offset}}) {
         nodes {
           title
@@ -63,7 +63,7 @@ export const getPosts = async (categorySlug, page = 1, postType = "posts") => {
     query: QUERY[postType],
 
     variables: {
-      categorySlug,
+      categorySlug: categorySlug || null,
       offset,
     },
   };

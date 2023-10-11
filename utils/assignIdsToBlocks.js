@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-export const cleanAndTransformBlocks = (blocksJSON) => {
+export const assignIdsToBlocks = (blocksJSON) => {
   const blocks = JSON.parse(blocksJSON);
 
   const assignIds = (b) => {

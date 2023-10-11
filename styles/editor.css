@@ -6,7 +6,11 @@
     @apply bg-pink-600 hover:bg-pink-700 inline-block my-2 px-4 py-2 uppercase rounded-md cursor-pointer font-bold text-white;
   }
 
+  .btn-white {
+    @apply bg-white hover:bg-gray-800 hover:text-white inline-block my-2 px-3.5 py-2 rounded-lg border-gray-200 border-solid border-[1px] cursor-pointer font-medium text-gray-800 text-sm transition-colors duration-300;
+  }
+
   .text-hot-gradient {
     @apply text-red-700;
-  }  
+  }
 }
