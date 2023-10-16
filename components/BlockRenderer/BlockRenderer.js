@@ -46,22 +46,6 @@ export const BlockRenderer = ({ blocks }) => {
             </div>
           </div>
         );
-        return (
-          <Columns
-            {...block.attributes}
-            key={block.id}
-            textColor={
-              theme[block.attributes.textColor] ||
-              block.attributes.style?.color?.text
-            }
-            backgroundColor={
-              theme[block.attributes.backgroundColor] ||
-              block.attributes.style?.color?.background
-            }
-          >
-            <BlockRenderer blocks={block.innerBlocks} />
-          </Columns>
-        );
 
       case "core/paragraph":
         return (
