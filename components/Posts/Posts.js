@@ -24,8 +24,6 @@ export const Posts = ({ category = "", postType = "posts" }) => {
 
     const data = await response.json();
 
-    console.log(data);
-
     setHasNextPage(data.hasNextPage);
     setPosts([...posts, ...data.posts]);
     setCurrentPage(currentPage + 1);
