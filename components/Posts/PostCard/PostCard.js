@@ -7,7 +7,6 @@ export const PostCard = ({
   uri,
   featuredImage,
   dateFormatted,
-  postType,
 }) => {
   return (
     <article className="bg-white rounded-[20px] md:px-7 md:py-5 md:pr-5 md:grid md:grid-cols-[70%_30%] items-center mt-4 md:mt-5">

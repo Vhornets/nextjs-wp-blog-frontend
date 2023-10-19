@@ -39,7 +39,7 @@ export const Posts = ({ category = "", postType = "posts" }) => {
   return (
     <>
       {posts.map((post) => (
-        <PostCard postType={postType} key={uuid()} {...post} />
+        <PostCard key={uuid()} {...post} />
       ))}
 
       {hasNextPage && (
