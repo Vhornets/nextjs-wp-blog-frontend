@@ -10,7 +10,7 @@ export const Posts = ({ category = "", postType = "posts" }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [textLoadMore, setTextLoadMore] = useState("Load more");
 
-  const search = async () => {
+  const fetchPosts = async () => {
     setTextLoadMore("Loading...");
 
     const response = await fetch("/api/posts", {
@@ -33,7 +33,7 @@ export const Posts = ({ category = "", postType = "posts" }) => {
   };
 
   useEffect(() => {
-    search();
+    fetchPosts();
   }, []);
 
   return (
@@ -44,7 +44,7 @@ export const Posts = ({ category = "", postType = "posts" }) => {
 
       {hasNextPage && (
         <div className="mt-8 text-center">
-          <div className="btn-white" onClick={() => search()}>
+          <div className="btn-white" onClick={() => fetchPosts()}>
             {textLoadMore}
           </div>
         </div>
